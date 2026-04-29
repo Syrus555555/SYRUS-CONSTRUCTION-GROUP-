@@ -302,6 +302,134 @@
   /* Stone accent line on section headers */
   .accent-line { display:block; width:0; height:2px; background:var(--stone); margin-bottom:20px; transition:width 900ms cubic-bezier(0.25,0,0,1); }
   .sr.visible .accent-line, .visible .accent-line { width:48px; }
+
+  /* CTA band layout */
+  .cta-band { display:flex; justify-content:space-between; align-items:center; gap:32px; }
+
+  /* Why Choose Us split */
+  .split-section { display:grid; grid-template-columns:1fr 1fr; min-height:620px; }
+  .split-section-copy { padding:72px 64px; display:flex; flex-direction:column; justify-content:center; background:#f4f4f2; }
+
+  /* ── MOBILE NAV ── */
+  .nav-mobile-toggle { display:none; background:none; border:none; color:#fff; cursor:pointer; padding:8px; }
+  .nav-mobile-menu { display:none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    /* Nav */
+    .nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .nav-cta { display: none; }
+    .nav-mobile-toggle { display: flex; align-items: center; justify-content: center; }
+    .nav-mobile-menu.open {
+      display: flex; flex-direction: column;
+      position: fixed; top: 78px; left: 0; right: 0;
+      background: rgba(28,28,28,0.98); backdrop-filter: blur(16px);
+      padding: 24px; gap: 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+      z-index: 99;
+    }
+    .nav-mobile-link {
+      font-size: 13px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--grey-3);
+      padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+      cursor: pointer;
+    }
+    .nav-mobile-link:last-child { border-bottom: none; }
+
+    /* Hero */
+    .hero { padding-bottom: 56px; }
+    .hero-title { font-size: clamp(56px, 12vw, 100px); }
+    .hero-stats { gap: 28px; margin-top: 48px; padding-top: 28px; flex-wrap: wrap; }
+    .hero-stat-n { font-size: 36px; }
+
+    /* Section */
+    .section { padding: 0 24px; }
+    .section-title { font-size: clamp(36px, 7vw, 64px); }
+
+    /* Services grid */
+    .services-grid { grid-template-columns: 1fr 1fr; }
+
+    /* Work grid */
+    .work-grid { grid-template-columns: 1fr; }
+
+    /* Feature strip */
+    .feature-strip .section { grid-template-columns: 1fr; gap: 40px; }
+    .feature-visual { display: none; }
+
+    /* Video section */
+    .video-inner-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+
+    /* Why Choose Us split */
+    .split-section { grid-template-columns: 1fr; }
+    .split-section .sr-left { min-height: 360px; }
+    .split-section-copy { padding: 48px 32px; }
+
+    /* About grid */
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .team-grid { grid-template-columns: 1fr 1fr; }
+
+    /* Contact grid */
+    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+
+    /* Footer grid */
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+
+    /* CTA band */
+    .cta-band { flex-direction: column; align-items: flex-start; gap: 24px; }
+
+    /* Location grid */
+    .location-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+
+    /* Work projects */
+    .work-projects-grid { grid-template-columns: 1fr !important; }
+  }
+
+  @media (max-width: 640px) {
+    /* Nav */
+    .nav { height: 64px; }
+    .nav-mobile-menu.open { top: 64px; }
+
+    /* Page padding */
+    .page-top { padding-top: 64px !important; }
+
+    /* Hero */
+    .hero { padding-bottom: 48px; min-height: 90vh; }
+    .hero-eyebrow { font-size: 9px !important; letter-spacing: 0.2em !important; margin-bottom: 28px !important; }
+    .hero-sub { font-size: 14px; }
+    .hero-actions { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .hero-stats { gap: 20px; }
+    .hero-stat-n { font-size: 28px; }
+
+    /* Section padding */
+    .py-lg { padding: 64px 0; }
+    .py-xl { padding: 80px 0; }
+
+    /* Services */
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card { padding: 28px 24px; }
+
+    /* Work */
+    .work-grid { grid-template-columns: 1fr; }
+
+    /* Split / Why Choose Us */
+    .split-section-copy { padding: 40px 24px; }
+    .split-section { min-height: unset; }
+    .split-section .sr-left { min-height: 300px; }
+
+    /* About values */
+    .values-grid { grid-template-columns: 1fr 1fr !important; }
+
+    /* Contact */
+    .contact-section { padding: 100px 0 60px; }
+    .form-row { flex-direction: column; gap: 0; }
+
+    /* Footer */
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer { padding: 48px 0 32px; }
+
+    /* Video section inner */
+    .video-section > div { padding: 48px 24px !important; }
+  }
 </style>
 </head>
 <body>
@@ -322,7 +450,7 @@ const useScrollReveal = () => {
         }
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
-    const els = document.querySelectorAll('.sr, .sr-scale, .sr-left, .sr-right');
+    const els = document.querySelectorAll('.sr, .sr-scale, .sr-left, .sr-right, .bounce-in');
     els.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   });
@@ -434,24 +562,39 @@ const Icon = ({ name, size = 24, ...props }) => {
 
 /* ── NAV ── */
 const Nav = ({ page, setPage }) => {
+  const [mobileOpen, setMobileOpen] = useState(false);
   const links = ['Home', 'Services', 'Work', 'About', 'Contact'];
+  const navigate = (p) => { setPage(p); setMobileOpen(false); };
   return (
-    <nav className="nav">
-      <div className="nav-logo" onClick={() => setPage('Home')}>
-        <img src="../../assets/logo-transparent.png" alt="Syrus" style={{ height: 64, width: 'auto', marginRight: '-22px' }} />
-        <div className="nav-logo-text">
-          <div className="nav-logo-name">Syrus</div>
-          <div className="nav-logo-sub">Construction Group</div>
+    <>
+      <nav className="nav">
+        <div className="nav-logo" onClick={() => navigate('Home')}>
+          <img src="../../assets/logo-transparent.png" alt="Syrus" className="nav-logo-mark" style={{ height: 64, width: 'auto', marginRight: '-22px' }} />
+          <div className="nav-logo-text">
+            <div className="nav-logo-name">Syrus</div>
+            <div className="nav-logo-sub">Construction Group</div>
+          </div>
         </div>
-      </div>
-      <div className="nav-links">
+        <div className="nav-links">
+          {links.map((l) =>
+          <div key={l} className={`nav-link${page === l ? ' active' : ''}`} onClick={() => navigate(l)}>{l}</div>
+          )}
+        </div>
+        <button className="nav-cta" onClick={() => navigate('Contact')}>Get In Touch</button>
+        <button className="nav-mobile-toggle" onClick={() => setMobileOpen((o) => !o)} aria-label="Menu">
+          {mobileOpen
+            ? <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path strokeLinecap="round" d="M6 6l12 12M6 18L18 6"/></svg>
+            : <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path strokeLinecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+          }
+        </button>
+      </nav>
+      <div className={`nav-mobile-menu${mobileOpen ? ' open' : ''}`}>
         {links.map((l) =>
-        <div key={l} className={`nav-link${page === l ? ' active' : ''}`} onClick={() => setPage(l)}>{l}</div>
+          <div key={l} className="nav-mobile-link" onClick={() => navigate(l)}>{l}</div>
         )}
+        <div className="nav-mobile-link" style={{ color: '#fff', fontWeight: 700 }} onClick={() => navigate('Contact')}>Get In Touch →</div>
       </div>
-      <button className="nav-cta" onClick={() => setPage('Contact')}>Get In Touch</button>
-    </nav>);
-
+    </>);
 };
 
 /* ── FOOTER ── */
@@ -525,7 +668,7 @@ const VideoSection = () => {
   return (
     <div className="video-section" data-screen-label="01 Home — Video">
       <div style={{ maxWidth: 'var(--max-w)', margin: '0 auto', padding: '80px 48px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
+        <div className="video-inner-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
 
           {/* Left — portrait video */}
           <div style={{ position: 'relative', maxWidth: 380, margin: '0 auto', width: '100%' }}>
@@ -683,17 +826,17 @@ const HomePage = ({ setPage }) =>
 
     {/* Why Choose Us */}
     <section style={{ background: '#f4f4f2', padding: '0' }} data-screen-label="01 Home — Why Choose Us">
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: 620 }}>
+      <div className="split-section">
         {/* Left — full bleed image */}
         <div className="sr-left img-zoom" style={{ overflow: 'hidden', position: 'relative' }}>
           <img
           src="../../assets/bathroom-hero.jpeg"
           alt="Syrus Construction — Bathroom Remodel"
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', position: 'absolute', inset: 0 }} />
-        
+
         </div>
         {/* Right — copy */}
-        <div style={{ padding: '72px 64px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: '#f4f4f2' }}>
+        <div className="split-section-copy">
           <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#999', marginBottom: 16 }}>Why Choose Syrus</div>
           <h2 style={{ fontFamily: 'Bebas Neue', fontSize: 'clamp(40px,4vw,68px)', letterSpacing: '0.05em', textTransform: 'uppercase', color: '#111', lineHeight: 0.95, marginBottom: 24 }}>Your Home.<br />Our Craft.</h2>
           <p style={{ fontSize: 15, fontWeight: 300, lineHeight: 1.8, color: '#5c5c5c', marginBottom: 36 }}>We treat every home as if it were our own. That means honest communication, meticulous craftsmanship, and a finished product you will be proud of for years to come.</p>
@@ -755,7 +898,7 @@ const HomePage = ({ setPage }) =>
     {/* Location Section */}
     <section style={{ background: '#1e1e1e', padding: '80px 0' }} data-screen-label="01 Home — Location">
       <div className="section">
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'start' }}>
+        <div className="location-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'start' }}>
           <div>
             <div className="section-label"><span className="accent-line"></span>Where We Work</div>
             <h2 style={{ fontFamily: 'Bebas Neue', fontSize: 'clamp(36px,4vw,64px)', letterSpacing: '0.05em', textTransform: 'uppercase', color: '#fff', lineHeight: 0.95, marginBottom: 24 }}>Serving the<br />Tampa Bay Area</h2>
@@ -801,7 +944,7 @@ const HomePage = ({ setPage }) =>
 
     {/* CTA Band */}
     <div style={{ background: '#f4f4f2', padding: '72px 0' }} data-screen-label="01 Home — CTA">
-      <div className="section" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div className="section cta-band">
         <div>
           <div style={{ fontFamily: 'Bebas Neue', fontSize: 48, color: '#111', letterSpacing: '0.05em', lineHeight: 0.95, textTransform: 'uppercase' }}>Ready to Transform<br />Your Home?</div>
           <div style={{ fontSize: 14, color: '#7a7a7a', marginTop: 12, fontWeight: 300 }}>Free at-home consultations available. Call 813-565-9000 or submit online.</div>
@@ -845,7 +988,7 @@ const ServicesPage = ({ setPage }) =>
       </div>
     </div>
     <div style={{ background: '#f4f4f2', padding: '72px 0' }} data-screen-label="02 Services — CTA">
-      <div className="section" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div className="section cta-band">
         <div>
           <div style={{ fontFamily: 'Bebas Neue', fontSize: 48, color: '#111', letterSpacing: '0.05em', lineHeight: 0.95, textTransform: 'uppercase' }}>Ready to Get Started?</div>
           <div style={{ fontSize: 14, color: '#7a7a7a', marginTop: 12, fontWeight: 300 }}>Free at-home consultations. Call 813-565-9000 or submit a request online.</div>
@@ -901,7 +1044,7 @@ const WorkPage = ({ setPage }) => {
       {/* Project Cards */}
       <div style={{ background: '#1e1e1e', paddingBottom: 96 }} data-screen-label="03 Work — Grid">
         <div style={{ maxWidth: 'var(--max-w)', margin: '0 auto', padding: '0 48px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 3 }}>
+          <div className="work-projects-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 3 }}>
             {filtered.map((project) =>
             <div key={project.id} style={{ cursor: 'pointer' }} onClick={() => openLightbox(project, 0)}>
                 {/* Cover image */}
@@ -961,7 +1104,7 @@ const WorkPage = ({ setPage }) => {
 
       {/* CTA */}
       <div style={{ background: '#f4f4f2', padding: '72px 0' }} data-screen-label="03 Work — CTA">
-        <div className="section" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="section cta-band">
           <div style={{ fontFamily: 'Bebas Neue', fontSize: 40, color: '#111', letterSpacing: '0.05em', lineHeight: 0.95, textTransform: 'uppercase' }}>Ready to Start<br />Your Project?</div>
           <button className="btn-primary" style={{ background: '#111', color: '#fff', flexShrink: 0 }} onClick={() => setPage('Contact')}>Get A Free Estimate</button>
         </div>
@@ -1042,14 +1185,14 @@ const AboutPage = ({ setPage }) =>
         className=""
         style={{ fontFamily: 'Bebas Neue', fontSize: 'clamp(40px,5vw,64px)', color: '#111', letterSpacing: '0.05em', textTransform: 'uppercase', lineHeight: 0.95, marginBottom: 40 }} />
       
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 1, background: 'rgba(0,0,0,0.07)' }}>
+        <div className="values-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 1, background: 'rgba(0,0,0,0.07)' }}>
           {[
         { num: '01', title: 'Honesty', body: 'Transparent pricing, honest timelines, and clear communication throughout every project.' },
         { num: '02', title: 'Integrity', body: 'We honour every commitment. Our word is our contract.' },
         { num: '03', title: 'Craftsmanship', body: 'Quality workmanship with attention to every detail — from rough framing to final finishes.' },
         { num: '04', title: 'Satisfaction', body: 'We do not consider a project complete until you are completely satisfied with the result.' }].
-        map((v) =>
-        <div key={v.title} style={{ background: '#fff', padding: '36px 28px' }}>
+        map((v, i) =>
+        <div key={v.title} className={`bounce-in sr-delay-${i + 1}`} style={{ background: '#fff', padding: '36px 28px' }}>
               <div style={{ fontFamily: 'Bebas Neue', fontSize: 20, color: '#ccc4bb', letterSpacing: '0.12em', marginBottom: 12 }}>{v.num}</div>
               <div style={{ fontFamily: 'Bebas Neue', fontSize: 28, color: '#111', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 12, lineHeight: 1 }}>{v.title}</div>
               <div style={{ fontSize: 13, color: '#7a7a7a', lineHeight: 1.6, fontWeight: 300 }}>{v.body}</div>
@@ -1145,7 +1288,7 @@ const App = () => {
   return (
     <div>
       <Nav page={page} setPage={(p) => {setPage(p);window.scrollTo({ top: 0 });}} />
-      <div style={{ paddingTop: 78 }}>
+      <div className="page-top" style={{ paddingTop: 78 }}>
         <PageWrapper>
           <PageComponent setPage={(p) => {setPage(p);window.scrollTo({ top: 0 });}} />
         </PageWrapper>
