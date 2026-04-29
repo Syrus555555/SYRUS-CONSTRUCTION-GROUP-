@@ -299,9 +299,14 @@
   .work-card .work-info { transition: transform 350ms cubic-bezier(0.25,0,0,1); }
   .work-card:hover .work-info { transform: translateY(-3px); }
 
-  /* Stone accent line on section headers */
-  .accent-line { display:block; width:0; height:2px; background:var(--stone); margin-bottom:20px; transition:width 900ms cubic-bezier(0.25,0,0,1); }
-  .sr.visible .accent-line, .visible .accent-line { width:48px; }
+  /* ── SECTION BLOCK PADDING CLASSES (replaces inline padding for responsive control) ── */
+  .section-block-xl  { padding: 140px 0 80px; }
+  .section-block-lg  { padding: 96px 0; }
+  .section-block-md  { padding: 80px 0; }
+  .section-block-sm  { padding: 72px 0; }
+  .section-block-pb  { padding-bottom: 96px; }
+  .section-inner     { max-width: var(--max-w); margin: 0 auto; padding: 0 48px; }
+  .video-section-inner { max-width: var(--max-w); margin: 0 auto; padding: 80px 48px; }
 
   /* CTA band layout */
   .cta-band { display:flex; justify-content:space-between; align-items:center; gap:32px; }
@@ -314,37 +319,45 @@
   .nav-mobile-toggle { display:none; background:none; border:none; color:#fff; cursor:pointer; padding:8px; }
   .nav-mobile-menu { display:none; }
 
-  /* ── RESPONSIVE ── */
+  /* ── RESPONSIVE 900px ── */
   @media (max-width: 900px) {
     /* Nav */
-    .nav { padding: 0 24px; }
+    .nav { padding: 0 20px; height: 68px; }
     .nav-links { display: none; }
     .nav-cta { display: none; }
     .nav-mobile-toggle { display: flex; align-items: center; justify-content: center; }
     .nav-mobile-menu.open {
       display: flex; flex-direction: column;
-      position: fixed; top: 78px; left: 0; right: 0;
-      background: rgba(28,28,28,0.98); backdrop-filter: blur(16px);
-      padding: 24px; gap: 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: fixed; top: 68px; left: 0; right: 0;
+      background: rgba(24,24,24,0.99); backdrop-filter: blur(20px);
+      padding: 8px 0; gap: 0; border-bottom: 1px solid rgba(255,255,255,0.08);
       z-index: 99;
     }
     .nav-mobile-link {
       font-size: 13px; font-weight: 600; letter-spacing: 0.12em;
       text-transform: uppercase; color: var(--grey-3);
-      padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 18px 24px; border-bottom: 1px solid rgba(255,255,255,0.05);
       cursor: pointer;
     }
-    .nav-mobile-link:last-child { border-bottom: none; }
+    .nav-mobile-link:last-child { border-bottom: none; color: #fff; }
+    .page-top { padding-top: 68px !important; }
 
     /* Hero */
     .hero { padding-bottom: 56px; }
-    .hero-title { font-size: clamp(56px, 12vw, 100px); }
-    .hero-stats { gap: 28px; margin-top: 48px; padding-top: 28px; flex-wrap: wrap; }
-    .hero-stat-n { font-size: 36px; }
+    .hero-title { font-size: clamp(54px, 11vw, 100px); }
+    .hero-stats { gap: 24px; margin-top: 48px; padding-top: 28px; flex-wrap: wrap; }
+    .hero-stat-n { font-size: 34px; }
 
-    /* Section */
+    /* Sections */
     .section { padding: 0 24px; }
+    .section-inner { padding: 0 24px; }
     .section-title { font-size: clamp(36px, 7vw, 64px); }
+    .section-block-xl { padding: 110px 0 56px; }
+    .section-block-lg { padding: 72px 0; }
+    .section-block-md { padding: 60px 0; }
+    .section-block-sm { padding: 48px 0; }
+    .section-block-pb { padding-bottom: 64px; }
+    .video-section-inner { padding: 56px 24px; }
 
     /* Services grid */
     .services-grid { grid-template-columns: 1fr 1fr; }
@@ -360,8 +373,8 @@
     .video-inner-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
 
     /* Why Choose Us split */
-    .split-section { grid-template-columns: 1fr; }
-    .split-section .sr-left { min-height: 360px; }
+    .split-section { grid-template-columns: 1fr; min-height: unset; }
+    .split-section .sr-left { min-height: 380px; position: relative; }
     .split-section-copy { padding: 48px 32px; }
 
     /* About grid */
@@ -369,66 +382,91 @@
     .team-grid { grid-template-columns: 1fr 1fr; }
 
     /* Contact grid */
-    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .contact-section { padding: 110px 0 56px; }
 
     /* Footer grid */
-    .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
 
     /* CTA band */
-    .cta-band { flex-direction: column; align-items: flex-start; gap: 24px; }
+    .cta-band { flex-direction: column; align-items: flex-start; gap: 20px; }
 
     /* Location grid */
     .location-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
 
     /* Work projects */
     .work-projects-grid { grid-template-columns: 1fr !important; }
+
+    /* Services header row flex */
+    .services-header-row { flex-direction: column !important; align-items: flex-start !important; gap: 16px !important; margin-bottom: 36px !important; }
   }
 
+  /* ── RESPONSIVE 640px ── */
   @media (max-width: 640px) {
     /* Nav */
-    .nav { height: 64px; }
-    .nav-mobile-menu.open { top: 64px; }
-
-    /* Page padding */
-    .page-top { padding-top: 64px !important; }
+    .nav { height: 60px; padding: 0 16px; }
+    .nav-mobile-menu.open { top: 60px; }
+    .nav-logo-name { font-size: 18px !important; }
+    .nav-logo-mark { height: 52px !important; }
+    .page-top { padding-top: 60px !important; }
 
     /* Hero */
-    .hero { padding-bottom: 48px; min-height: 90vh; }
-    .hero-eyebrow { font-size: 9px !important; letter-spacing: 0.2em !important; margin-bottom: 28px !important; }
-    .hero-sub { font-size: 14px; }
-    .hero-actions { flex-direction: column; align-items: flex-start; gap: 12px; }
-    .hero-stats { gap: 20px; }
-    .hero-stat-n { font-size: 28px; }
+    .hero { padding-bottom: 40px; min-height: 85vh; }
+    .hero-content { padding-top: 72px !important; }
+    .hero-eyebrow { font-size: 8px !important; letter-spacing: 0.18em !important; margin-bottom: 20px !important; }
+    .hero-title { font-size: clamp(48px, 13vw, 80px); margin-bottom: 24px; }
+    .hero-sub { font-size: 14px; max-width: 100%; margin-bottom: 32px; }
+    .hero-actions { flex-direction: column; align-items: stretch; gap: 10px; }
+    .hero-actions button { width: 100%; text-align: center; padding: 16px 24px; }
+    .hero-stats { gap: 16px; margin-top: 36px; padding-top: 24px; }
+    .hero-stat-n { font-size: 26px; }
+    .hero-stat-l { font-size: 9px; }
 
-    /* Section padding */
-    .py-lg { padding: 64px 0; }
-    .py-xl { padding: 80px 0; }
+    /* Sections */
+    .section { padding: 0 16px; }
+    .section-inner { padding: 0 16px; }
+    .section-title { font-size: clamp(32px, 10vw, 56px); }
+    .section-sub { margin-bottom: 36px; }
+    .section-block-xl { padding: 96px 0 40px; }
+    .section-block-lg { padding: 56px 0; }
+    .section-block-md { padding: 48px 0; }
+    .section-block-sm { padding: 40px 0; }
+    .section-block-pb { padding-bottom: 48px; }
+    .video-section-inner { padding: 48px 16px; }
 
     /* Services */
     .services-grid { grid-template-columns: 1fr; }
-    .service-card { padding: 28px 24px; }
+    .service-card { padding: 28px 20px; }
+    .service-title { font-size: 24px; }
 
     /* Work */
     .work-grid { grid-template-columns: 1fr; }
+    .work-info { padding: 14px 16px; }
+    .work-title { font-size: 18px; }
 
     /* Split / Why Choose Us */
-    .split-section-copy { padding: 40px 24px; }
-    .split-section { min-height: unset; }
-    .split-section .sr-left { min-height: 300px; }
+    .split-section .sr-left { min-height: 280px; }
+    .split-section-copy { padding: 36px 16px; }
 
     /* About values */
     .values-grid { grid-template-columns: 1fr 1fr !important; }
 
     /* Contact */
-    .contact-section { padding: 100px 0 60px; }
+    .contact-section { padding: 96px 0 48px !important; }
+    .contact-grid { gap: 32px; }
     .form-row { flex-direction: column; gap: 0; }
 
     /* Footer */
-    .footer-grid { grid-template-columns: 1fr; }
-    .footer { padding: 48px 0 32px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    .footer { padding: 48px 0 28px; }
+    .footer-bottom { flex-direction: column; gap: 8px; align-items: flex-start; }
 
-    /* Video section inner */
-    .video-section > div { padding: 48px 24px !important; }
+    /* Buttons */
+    .btn-primary, .btn-outline { padding: 14px 24px; }
+
+    /* CTA band */
+    .cta-band { padding: 0; }
+    .cta-band button { width: 100%; text-align: center; }
   }
 </style>
 </head>
@@ -667,7 +705,7 @@ const VideoSection = () => {
 
   return (
     <div className="video-section" data-screen-label="01 Home — Video">
-      <div style={{ maxWidth: 'var(--max-w)', margin: '0 auto', padding: '80px 48px' }}>
+      <div className="video-section-inner">
         <div className="video-inner-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
 
           {/* Left — portrait video */}
@@ -794,15 +832,15 @@ const HomePage = ({ setPage }) =>
     <VideoSection />
 
     {/* Services Preview */}
-    <section style={{ background: '#232323', padding: '96px 0' }} data-screen-label="01 Home — Services Preview">
+    <section className="section-block-lg" style={{ background: '#232323' }} data-screen-label="01 Home — Services Preview">
       <div className="section">
         <div className="section-label"><span className="accent-line"></span>What We Do</div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 48 }}>
+        <div className="services-header-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 48 }}>
           <h2 className="section-title" style={{ marginBottom: 0 }}>Our<br />Services</h2>
           <button className="btn-outline" onClick={() => setPage('Services')}>All Services →</button>
         </div>
       </div>
-      <div style={{ maxWidth: 'var(--max-w)', margin: '0 auto', padding: '0 48px' }}>
+      <div className="section-inner">
         <div className="services-grid">
           {[
         { icon: 'wrench', num: '01', title: 'Kitchens', body: 'Full kitchen transformations — custom cabinetry, quartz countertops, tile backsplash, appliance installation, cabinet painting, new hardware, and all electrical and plumbing finish work.' },
@@ -863,15 +901,15 @@ const HomePage = ({ setPage }) =>
     </section>
 
     {/* Work Preview */}
-    <section style={{ background: '#282828', padding: '96px 0' }} data-screen-label="01 Home — Work Preview">
+    <section className="section-block-lg" style={{ background: '#282828' }} data-screen-label="01 Home — Work Preview">
       <div className="section">
         <div className="section-label"><span className="accent-line"></span>Selected Projects</div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 48 }}>
+        <div className="services-header-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 48 }}>
           <h2 className="section-title" style={{ marginBottom: 0 }}>Recent<br />Work</h2>
           <button className="btn-outline" onClick={() => setPage('Work')}>All Projects →</button>
         </div>
       </div>
-      <div style={{ maxWidth: 'var(--max-w)', margin: '0 auto', padding: '0 48px' }}>
+      <div className="section-inner">
         <div className="work-grid">
           {[
         { tag: 'Kitchen', title: 'Modern White Kitchen', meta: 'Apollo Beach · 2024', img: k1[0] },
@@ -896,7 +934,7 @@ const HomePage = ({ setPage }) =>
     </section>
 
     {/* Location Section */}
-    <section style={{ background: '#1e1e1e', padding: '80px 0' }} data-screen-label="01 Home — Location">
+    <section className="section-block-md" style={{ background: '#1e1e1e' }} data-screen-label="01 Home — Location">
       <div className="section">
         <div className="location-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'start' }}>
           <div>
@@ -943,7 +981,7 @@ const HomePage = ({ setPage }) =>
     </section>
 
     {/* CTA Band */}
-    <div style={{ background: '#f4f4f2', padding: '72px 0' }} data-screen-label="01 Home — CTA">
+    <div className="section-block-sm" style={{ background: '#f4f4f2' }} data-screen-label="01 Home — CTA">
       <div className="section cta-band">
         <div>
           <div style={{ fontFamily: 'Bebas Neue', fontSize: 48, color: '#111', letterSpacing: '0.05em', lineHeight: 0.95, textTransform: 'uppercase' }}>Ready to Transform<br />Your Home?</div>
@@ -958,14 +996,14 @@ const HomePage = ({ setPage }) =>
 /* ── SERVICES PAGE ── */
 const ServicesPage = ({ setPage }) =>
 <div>
-    <section style={{ background: '#1e1e1e', padding: '140px 0 80px' }} data-screen-label="02 Services — Hero">
+    <section className="section-block-xl" style={{ background: '#1e1e1e' }} data-screen-label="02 Services — Hero">
       <div className="section">
         <div className="section-label"><span className="accent-line"></span>What We Do</div>
         <h1 className="section-title sr">Our<br />Services</h1>
         <p className="section-sub sr sr-delay-1">From full kitchen and bathroom renovations to outdoor living spaces, commercial build-outs, and everything in between — these are just some of the categories we serve. If you don't see your project listed, reach out. Chances are, we do it.</p>
       </div>
     </section>
-    <div style={{ background: '#252525', paddingBottom: 96 }}>
+    <div className="section-block-pb" style={{ background: '#252525' }}>
       <div style={{ maxWidth: 'var(--max-w)', margin: '0 auto', padding: '0 48px' }}>
         <div className="services-grid" data-screen-label="02 Services — Grid" style={{ gridTemplateColumns: 'repeat(3,1fr)' }}>
           {[
@@ -987,7 +1025,7 @@ const ServicesPage = ({ setPage }) =>
         </div>
       </div>
     </div>
-    <div style={{ background: '#f4f4f2', padding: '72px 0' }} data-screen-label="02 Services — CTA">
+    <div className="section-block-sm" style={{ background: '#f4f4f2' }} data-screen-label="02 Services — CTA">
       <div className="section cta-band">
         <div>
           <div style={{ fontFamily: 'Bebas Neue', fontSize: 48, color: '#111', letterSpacing: '0.05em', lineHeight: 0.95, textTransform: 'uppercase' }}>Ready to Get Started?</div>
@@ -1021,7 +1059,7 @@ const WorkPage = ({ setPage }) => {
 
   return (
     <div>
-      <section style={{ background: '#1e1e1e', padding: '140px 0 60px' }} data-screen-label="03 Work — Hero">
+      <section className="section-block-xl" style={{ background: '#1e1e1e', paddingBottom: 60 }} data-screen-label="03 Work — Hero">
         <div className="section">
           <div className="section-label"><span className="accent-line"></span>Portfolio</div>
           <h1 className="section-title sr">Our<br />Work</h1>
@@ -1042,8 +1080,8 @@ const WorkPage = ({ setPage }) => {
       </section>
 
       {/* Project Cards */}
-      <div style={{ background: '#1e1e1e', paddingBottom: 96 }} data-screen-label="03 Work — Grid">
-        <div style={{ maxWidth: 'var(--max-w)', margin: '0 auto', padding: '0 48px' }}>
+      <div className="section-block-pb" style={{ background: '#1e1e1e' }} data-screen-label="03 Work — Grid">
+        <div className="section-inner">
           <div className="work-projects-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 3 }}>
             {filtered.map((project) =>
             <div key={project.id} style={{ cursor: 'pointer' }} onClick={() => openLightbox(project, 0)}>
@@ -1103,7 +1141,7 @@ const WorkPage = ({ setPage }) => {
       </div>
 
       {/* CTA */}
-      <div style={{ background: '#f4f4f2', padding: '72px 0' }} data-screen-label="03 Work — CTA">
+      <div className="section-block-sm" style={{ background: '#f4f4f2' }} data-screen-label="03 Work — CTA">
         <div className="section cta-band">
           <div style={{ fontFamily: 'Bebas Neue', fontSize: 40, color: '#111', letterSpacing: '0.05em', lineHeight: 0.95, textTransform: 'uppercase' }}>Ready to Start<br />Your Project?</div>
           <button className="btn-primary" style={{ background: '#111', color: '#fff', flexShrink: 0 }} onClick={() => setPage('Contact')}>Get A Free Estimate</button>
@@ -1149,7 +1187,7 @@ const WorkPage = ({ setPage }) => {
 /* ── ABOUT PAGE ── */
 const AboutPage = ({ setPage }) =>
 <div>
-    <section style={{ background: '#1e1e1e', padding: '140px 0 80px' }} data-screen-label="04 About — Hero">
+    <section className="section-block-xl" style={{ background: '#1e1e1e' }} data-screen-label="04 About — Hero">
       <div className="section">
         <div className="section-label"><span className="accent-line"></span>Who We Are</div>
         <h1 className="section-title sr">About<br />SCG</h1>
@@ -1177,7 +1215,7 @@ const AboutPage = ({ setPage }) =>
       </div>
     </section>
     {/* Values */}
-    <section style={{ background: '#f4f4f2', padding: '80px 0' }} data-screen-label="04 About — Values">
+    <section className="section-block-md" style={{ background: '#f4f4f2' }} data-screen-label="04 About — Values">
       <div className="section">
         <div className="section-label" style={{ color: '#999' }}>Our Principles</div>
         <Typewriter
