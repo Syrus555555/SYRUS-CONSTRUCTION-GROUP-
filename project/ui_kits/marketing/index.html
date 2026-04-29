@@ -1150,30 +1150,33 @@ const WorkPage = ({ setPage }) => {
 
       {/* Lightbox */}
       {lightbox &&
-      <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.96)', zIndex: 1000, display: 'flex', flexDirection: 'column' }}
-      onClick={closeLightbox}>
+      <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.96)', zIndex: 1000, display: 'flex', flexDirection: 'column' }}>
+          {/* Close button — always on top, never blocked */}
+          <button
+            onClick={closeLightbox}
+            style={{ position: 'absolute', top: 16, right: 16, zIndex: 10, width: 48, height: 48, background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.25)', color: '#fff', fontSize: 22, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 0, lineHeight: 1 }}
+          >✕</button>
+
           {/* Top bar */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 32px', borderBottom: '1px solid rgba(255,255,255,0.08)', flexShrink: 0 }}
-        onClick={(e) => e.stopPropagation()}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 72px 20px 32px', borderBottom: '1px solid rgba(255,255,255,0.08)', flexShrink: 0 }}>
             <div>
               <div style={{ fontFamily: 'Bebas Neue', fontSize: 22, color: '#fff', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{lightbox.title}</div>
               <div style={{ fontSize: 10, color: 'var(--grey-5)', letterSpacing: '0.1em' }}>{lightbox.idx + 1} / {lightbox.imgs.length}</div>
             </div>
-            <button onClick={closeLightbox} style={{ background: 'none', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', padding: '8px 16px', fontFamily: 'DM Sans', fontSize: 10, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', cursor: 'pointer' }}>Close ✕</button>
           </div>
+
           {/* Main image */}
-          <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}
-        onClick={(e) => e.stopPropagation()}>
+          <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
             <img src={lightbox.imgs[lightbox.idx]} alt="" style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain', display: 'block' }} />
-            <button onClick={prevImg} style={{ position: 'absolute', left: 24, background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', width: 48, height: 48, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', fontSize: 20 }}>‹</button>
-            <button onClick={nextImg} style={{ position: 'absolute', right: 24, background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', width: 48, height: 48, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', fontSize: 20 }}>›</button>
+            <button onClick={prevImg} style={{ position: 'absolute', left: 16, background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', width: 48, height: 48, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', fontSize: 24, zIndex: 2 }}>‹</button>
+            <button onClick={nextImg} style={{ position: 'absolute', right: 16, background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', width: 48, height: 48, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', fontSize: 24, zIndex: 2 }}>›</button>
           </div>
+
           {/* Thumbnail strip */}
-          <div style={{ display: 'flex', gap: 3, padding: '12px 32px', background: 'rgba(0,0,0,0.6)', overflowX: 'auto', flexShrink: 0 }}
-        onClick={(e) => e.stopPropagation()}>
+          <div style={{ display: 'flex', gap: 3, padding: '12px 16px', background: 'rgba(0,0,0,0.6)', overflowX: 'auto', flexShrink: 0 }}>
             {lightbox.imgs.map((img, i) =>
           <div key={i} onClick={() => setLightbox((l) => ({ ...l, idx: i }))}
-          style={{ width: 64, height: 64, flexShrink: 0, overflow: 'hidden', cursor: 'pointer', opacity: i === lightbox.idx ? 1 : 0.4, border: i === lightbox.idx ? '2px solid #ccc4bb' : '2px solid transparent', transition: 'all 200ms' }}>
+          style={{ width: 56, height: 56, flexShrink: 0, overflow: 'hidden', cursor: 'pointer', opacity: i === lightbox.idx ? 1 : 0.4, border: i === lightbox.idx ? '2px solid #ccc4bb' : '2px solid transparent', transition: 'all 200ms' }}>
                 <img src={img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
           )}
