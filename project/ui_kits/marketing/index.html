@@ -1325,13 +1325,13 @@ const App = () => {
 
   return (
     <div>
-      <Nav page={page} setPage={(p) => {setPage(p);window.scrollTo({ top: 0 });}} />
+      <Nav page={page} setPage={(p) => {setPage(p);window.scrollTo(0, 0);}} />
       <div className="page-top" style={{ paddingTop: 78 }}>
         <PageWrapper>
-          <PageComponent setPage={(p) => {setPage(p);window.scrollTo({ top: 0 });}} />
+          <PageComponent setPage={(p) => {setPage(p);window.scrollTo(0, 0);}} />
         </PageWrapper>
       </div>
-      <Footer setPage={(p) => {setPage(p);window.scrollTo({ top: 0 });}} />
+      <Footer setPage={(p) => {setPage(p);window.scrollTo(0, 0);}} />
     </div>);
 
 };
