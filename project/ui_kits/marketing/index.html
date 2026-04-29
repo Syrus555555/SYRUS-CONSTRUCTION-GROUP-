@@ -359,8 +359,8 @@
     .section-block-pb { padding-bottom: 64px; }
     .video-section-inner { padding: 56px 24px; }
 
-    /* Services grid */
-    .services-grid { grid-template-columns: 1fr 1fr; }
+    /* Services grid — 1 column on all mobile */
+    .services-grid { grid-template-columns: 1fr; }
 
     /* Work grid */
     .work-grid { grid-template-columns: 1fr; }
@@ -1005,7 +1005,7 @@ const ServicesPage = ({ setPage }) =>
     </section>
     <div className="section-block-pb" style={{ background: '#252525' }}>
       <div style={{ maxWidth: 'var(--max-w)', margin: '0 auto', padding: '0 48px' }}>
-        <div className="services-grid" data-screen-label="02 Services — Grid" style={{ gridTemplateColumns: 'repeat(3,1fr)' }}>
+        <div className="services-grid" data-screen-label="02 Services — Grid">
           {[
         { icon: 'wrench', num: '01', title: 'Kitchens', body: 'From a simple cabinet refresh to a full gut renovation — we do it all. Custom cabinetry, quartz and granite countertops, tile backsplash, under-cabinet lighting, appliance installation, cabinet painting and new hardware, sink and faucet replacement, and all associated electrical and plumbing rough and finish work. We design around your lifestyle and your budget.' },
         { icon: 'home', num: '02', title: 'Bathrooms', body: 'We transform outdated bathrooms into spaces you look forward to using. Custom tile showers with niches and benches, freestanding and drop-in soaking tubs, frameless glass enclosures, floating and custom vanities, new fixtures and faucets, heated tile floors, exhaust fans, and full plumbing and electrical work. Master baths, guest baths, pool baths, and powder rooms.' },
