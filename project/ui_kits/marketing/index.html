@@ -687,7 +687,7 @@ const ImgPlaceholder = ({ aspect = '4/3', label = '', dark = true, style = {} })
 
 
 /* ── VIDEO SECTION COMPONENT ── */
-const VideoSection = () => {
+const VideoSection = ({ setPage }) => {
   const videoRef = React.useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -760,7 +760,7 @@ const VideoSection = () => {
                 </div>
               )}
             </div>
-            <button className="btn-primary" style={{ background: '#fff', color: '#111' }} onClick={() => {}}>
+            <button className="btn-primary" style={{ background: '#fff', color: '#111' }} onClick={() => setPage('Work')}>
               See Full Project
             </button>
           </div>
@@ -829,7 +829,7 @@ const HomePage = ({ setPage }) =>
     </div>
 
     {/* Video Section */}
-    <VideoSection />
+    <VideoSection setPage={setPage} />
 
     {/* Services Preview */}
     <section className="section-block-lg" style={{ background: '#232323' }} data-screen-label="01 Home — Services Preview">
@@ -893,8 +893,8 @@ const HomePage = ({ setPage }) =>
           )}
           </div>
           <div style={{ display: 'flex', gap: 12 }}>
-            <button style={{ fontFamily: 'DM Sans', fontSize: 11, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', background: '#111', color: '#fff', border: 'none', padding: '14px 28px', cursor: 'pointer' }} onClick={() => {}}>Request Free Estimate</button>
-            <button style={{ fontFamily: 'DM Sans', fontSize: 11, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', background: 'transparent', color: '#111', border: '1px solid rgba(0,0,0,0.2)', padding: '14px 28px', cursor: 'pointer' }} onClick={() => {}}>View Our Work</button>
+            <button style={{ fontFamily: 'DM Sans', fontSize: 11, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', background: '#111', color: '#fff', border: 'none', padding: '14px 28px', cursor: 'pointer' }} onClick={() => setPage('Contact')}>Request Free Estimate</button>
+            <button style={{ fontFamily: 'DM Sans', fontSize: 11, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', background: 'transparent', color: '#111', border: '1px solid rgba(0,0,0,0.2)', padding: '14px 28px', cursor: 'pointer' }} onClick={() => setPage('Work')}>View Our Work</button>
           </div>
         </div>
       </div>
