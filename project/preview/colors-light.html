@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f5f5f5; font-family: 'DM Sans', sans-serif; padding: 24px; }
+  .row { display: flex; gap: 0; }
+  .swatch { flex: 1; height: 72px; display: flex; align-items: flex-end; padding: 8px; border: 1px solid rgba(0,0,0,0.06); }
+  .label { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+  .meta { font-size: 9px; opacity: 0.6; margin-top: 2px; letter-spacing: 0.04em; }
+  .group { margin-bottom: 16px; }
+  .group-title { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: #999; font-weight: 600; margin-bottom: 6px; }
+</style>
+</head>
+<body>
+<div class="group">
+  <div class="group-title">Light Greys</div>
+  <div class="row">
+    <div class="swatch" style="background:#c8c8c8;"><div><div class="label" style="color:#555">200</div><div class="meta" style="color:#555">#c8c8c8</div></div></div>
+    <div class="swatch" style="background:#dedede;"><div><div class="label" style="color:#777">150</div><div class="meta" style="color:#777">#dedede</div></div></div>
+    <div class="swatch" style="background:#ebebeb;"><div><div class="label" style="color:#999">100</div><div class="meta" style="color:#999">#ebebeb</div></div></div>
+    <div class="swatch" style="background:#f5f5f5;"><div><div class="label" style="color:#aaa">50</div><div class="meta" style="color:#aaa">#f5f5f5</div></div></div>
+  </div>
+</div>
+<div class="group">
+  <div class="group-title">Whites</div>
+  <div class="row">
+    <div class="swatch" style="background:#ffffff;"><div><div class="label" style="color:#bbb">900</div><div class="meta" style="color:#bbb">#ffffff</div></div></div>
+    <div class="swatch" style="background:#fafafa;"><div><div class="label" style="color:#bbb">800</div><div class="meta" style="color:#bbb">#fafafa</div></div></div>
+    <div class="swatch" style="background:#f2f2f2;"><div><div class="label" style="color:#bbb">700</div><div class="meta" style="color:#bbb">#f2f2f2</div></div></div>
+    <div class="swatch" style="background:#ebebeb;"><div><div class="label" style="color:#bbb">600</div><div class="meta" style="color:#bbb">#ebebeb</div></div></div>
+  </div>
+</div>
+</body>
+</html>

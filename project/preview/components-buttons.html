@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;600&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; padding: 24px 28px; font-family: 'DM Sans', sans-serif; }
+  .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 16px; }
+  .label { font-size: 9px; color: #444; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+  button { font-family: 'DM Sans', sans-serif; cursor: pointer; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; border: none; transition: all 200ms; }
+
+  .btn-primary { background: #fff; color: #111; padding: 14px 28px; }
+  .btn-primary:hover { background: #e8e8e8; }
+
+  .btn-secondary { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.3); padding: 14px 28px; }
+  .btn-secondary:hover { border-color: rgba(255,255,255,0.7); }
+
+  .btn-ghost { background: transparent; color: #a0a0a0; padding: 14px 28px; }
+  .btn-ghost:hover { color: #fff; }
+
+  .btn-stone { background: #ccc4bb; color: #111; padding: 14px 28px; }
+
+  .btn-sm { background: #fff; color: #111; padding: 10px 20px; font-size: 10px; }
+  .btn-lg { background: #fff; color: #111; padding: 18px 40px; font-size: 13px; letter-spacing: 0.16em; }
+
+  /* icon button */
+  .btn-icon { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 12px; display: flex; align-items: center; gap: 8px; }
+</style>
+</head>
+<body>
+  <div class="label">Primary</div>
+  <div class="row">
+    <button class="btn-primary">Get In Touch</button>
+    <button class="btn-primary" disabled style="opacity:0.3;cursor:not-allowed">Unavailable</button>
+  </div>
+  <div class="label">Secondary / Outline</div>
+  <div class="row">
+    <button class="btn-secondary">View Our Work</button>
+    <button class="btn-stone" style="border:none;">Learn More</button>
+  </div>
+  <div class="label">Ghost</div>
+  <div class="row">
+    <button class="btn-ghost">Learn More →</button>
+  </div>
+  <div class="label">Sizes</div>
+  <div class="row">
+    <button class="btn-sm">Small</button>
+    <button class="btn-primary">Default</button>
+    <button class="btn-lg">Large CTA</button>
+  </div>
+  <div class="label">With Icon</div>
+  <div class="row">
+    <button class="btn-icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/></svg>
+      Contact Us
+    </button>
+  </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; padding: 20px; background: #1a1a1a; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .token { display: flex; align-items: center; gap: 10px; padding: 8px 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); }
+  .dot { width: 28px; height: 28px; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.1); }
+  .name { font-size: 10px; font-weight: 600; color: #a0a0a0; letter-spacing: 0.06em; text-transform: uppercase; }
+  .val { font-size: 9px; color: #555; margin-top: 2px; }
+  .section-label { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: #444; font-weight: 600; margin: 14px 0 6px; }
+</style>
+</head>
+<body>
+<div class="section-label">Surfaces</div>
+<div class="grid">
+  <div class="token"><div class="dot" style="background:#111111;"></div><div><div class="name">surface-primary</div><div class="val">--black-900</div></div></div>
+  <div class="token"><div class="dot" style="background:#1a1a1a;"></div><div><div class="name">surface-secondary</div><div class="val">--black-800</div></div></div>
+  <div class="token"><div class="dot" style="background:#242424;"></div><div><div class="name">surface-tertiary</div><div class="val">--black-700</div></div></div>
+  <div class="token"><div class="dot" style="background:#ffffff; border-color:#eee;"></div><div><div class="name">surface-light</div><div class="val">--white-900</div></div></div>
+</div>
+<div class="section-label">Foregrounds</div>
+<div class="grid">
+  <div class="token"><div class="dot" style="background:#ffffff;"></div><div><div class="name">fg-primary</div><div class="val">--white-900</div></div></div>
+  <div class="token"><div class="dot" style="background:#c8c8c8;"></div><div><div class="name">fg-secondary</div><div class="val">--grey-200</div></div></div>
+  <div class="token"><div class="dot" style="background:#7a7a7a;"></div><div><div class="name">fg-tertiary</div><div class="val">--grey-400</div></div></div>
+  <div class="token"><div class="dot" style="background:#ccc4bb;"></div><div><div class="name">accent</div><div class="val">--stone-300</div></div></div>
+</div>
+</body>
+</html>

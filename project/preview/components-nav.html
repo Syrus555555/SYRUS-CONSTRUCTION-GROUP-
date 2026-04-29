@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;600&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; margin: 0; font-family: 'DM Sans', sans-serif; }
+
+  nav { background: #111; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 0 32px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+  .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.14em; color: #fff; text-transform: uppercase; }
+  .logo-sub { font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: #555; margin-top: 1px; }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-link { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; color: #a0a0a0; text-decoration: none; }
+  .nav-link.active { color: #fff; }
+  .nav-cta { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; background: #fff; color: #111; padding: 10px 20px; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+
+  /* Scrolled / sticky state */
+  .nav-scrolled { background: rgba(17,17,17,0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+
+  .spacer { height: 20px; }
+  .label { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: #444; padding: 12px 32px 6px; }
+</style>
+</head>
+<body>
+  <div class="label">Default</div>
+  <nav>
+    <div>
+      <div class="logo-text">Syrus</div>
+      <div class="logo-sub">Construction Group</div>
+    </div>
+    <div class="nav-links">
+      <a class="nav-link active" href="#">Home</a>
+      <a class="nav-link" href="#">Services</a>
+      <a class="nav-link" href="#">Work</a>
+      <a class="nav-link" href="#">About</a>
+      <a class="nav-link" href="#">Contact</a>
+    </div>
+    <button class="nav-cta">Get In Touch</button>
+  </nav>
+
+  <div class="label">Scrolled / Frosted</div>
+  <nav class="nav-scrolled">
+    <div>
+      <div class="logo-text">Syrus</div>
+      <div class="logo-sub">Construction Group</div>
+    </div>
+    <div class="nav-links">
+      <a class="nav-link" href="#">Home</a>
+      <a class="nav-link active" href="#">Services</a>
+      <a class="nav-link" href="#">Work</a>
+      <a class="nav-link" href="#">About</a>
+      <a class="nav-link" href="#">Contact</a>
+    </div>
+    <button class="nav-cta">Get In Touch</button>
+  </nav>
+</body>
+</html>

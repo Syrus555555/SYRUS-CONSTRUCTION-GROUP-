@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #fff; padding: 24px 28px; font-family: 'DM Sans', sans-serif; }
+  .field { margin-bottom: 16px; }
+  label { display: block; font-size: 9px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #999; margin-bottom: 6px; }
+  input, textarea, select {
+    width: 100%; font-family: 'DM Sans', sans-serif; font-size: 14px;
+    padding: 12px 14px; border: 1px solid #dedede; background: #fff;
+    color: #111; outline: none; border-radius: 0; transition: border-color 200ms;
+    appearance: none;
+  }
+  input:focus, textarea:focus, select:focus { border-color: #111; }
+  input::placeholder, textarea::placeholder { color: #c8c8c8; }
+  .input-error { border-color: #5c5c5c; }
+  .error-msg { font-size: 11px; color: #5c5c5c; margin-top: 4px; letter-spacing: 0.04em; }
+  .row { display: flex; gap: 12px; }
+  .row .field { flex: 1; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="field">
+      <label>First Name</label>
+      <input type="text" placeholder="James" value="James">
+    </div>
+    <div class="field">
+      <label>Last Name</label>
+      <input type="text" placeholder="Harlow">
+    </div>
+  </div>
+  <div class="field">
+    <label>Email Address</label>
+    <input type="email" placeholder="james@harlow.com" class="input-error">
+    <div class="error-msg">Please enter a valid email address.</div>
+  </div>
+  <div class="field">
+    <label>Project Type</label>
+    <select>
+      <option>Commercial Construction</option>
+      <option>Residential Development</option>
+      <option>Industrial</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>Message</label>
+    <textarea rows="3" placeholder="Describe your project…"></textarea>
+  </div>
+</body>
+</html>

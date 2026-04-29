@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #fff; padding: 24px 28px; font-family: 'DM Sans', sans-serif; }
+  .grid { display: grid; grid-template-columns: repeat(9, 1fr); gap: 4px; align-items: end; }
+  .bar-wrap { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .bar { background: #111; width: 100%; }
+  .val { font-size: 9px; color: #999; text-align: center; letter-spacing: 0.04em; }
+  .token { font-size: 8px; color: #bbb; text-align: center; letter-spacing: 0.04em; margin-top: 2px; }
+  .title { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: #bbb; margin-bottom: 12px; font-weight: 600; }
+</style>
+</head>
+<body>
+  <div class="title">Spacing Scale — 8px Base Grid</div>
+  <div class="grid">
+    <div class="bar-wrap"><div class="bar" style="height:4px"></div><div class="val">4</div><div class="token">sp-1</div></div>
+    <div class="bar-wrap"><div class="bar" style="height:8px"></div><div class="val">8</div><div class="token">sp-2</div></div>
+    <div class="bar-wrap"><div class="bar" style="height:12px"></div><div class="val">12</div><div class="token">sp-3</div></div>
+    <div class="bar-wrap"><div class="bar" style="height:16px"></div><div class="val">16</div><div class="token">sp-4</div></div>
+    <div class="bar-wrap"><div class="bar" style="height:24px"></div><div class="val">24</div><div class="token">sp-5</div></div>
+    <div class="bar-wrap"><div class="bar" style="height:32px"></div><div class="val">32</div><div class="token">sp-6</div></div>
+    <div class="bar-wrap"><div class="bar" style="height:48px"></div><div class="val">48</div><div class="token">sp-7</div></div>
+    <div class="bar-wrap"><div class="bar" style="height:64px"></div><div class="val">64</div><div class="token">sp-8</div></div>
+    <div class="bar-wrap"><div class="bar" style="height:80px" style="opacity:0.4"></div><div class="val">96+</div><div class="token">sp-9</div></div>
+  </div>
+</body>
+</html>
